@@ -1,0 +1,59 @@
+<?php
+/**
+ * NOTICE OF LICENSE
+ *
+ * Subject to the terms, conditions and limitations of this EULA,
+ * Company hereby grants you a limited, nonexclusive, nontransferable,
+ * non-assignable license, without rights to sublicense, to install or have installed,
+ * display and use the Software (in object code only) only on the computers
+ * to which the Software is downloaded.  The terms and conditions of this EULA
+ * will govern any upgrades, updates, patches, hotfixes and/or
+ * additional versions of the Software provided by Company, at Company’s sole
+ * discretion, that replace and/or supplement the original Software (collectively, “Update”),
+ * unless such Update is accompanied by or references a separate license
+ * agreement in which case the terms and conditions of that agreement will
+ * govern.  If this EULA governs your use of an Update, such Update shall be
+ * considered Software for purposes of this EULA. Unless earlier terminated
+ * as provided herein, the term of each individual license granted under this
+ * EULA begins on the date of acceptance of this EULA and shall terminate only
+ * as otherwise set forth herein.Each party recognizes that
+ * Company grants no licenses except for the license expressly set forth.
+ *
+ * @category    Invodo
+ * @package     Invodo_Video
+ * @copyright   Copyright (c) 2013 INVODO (http://www.invodo.com/)
+ * @license     http://opensource.org/licenses/OSL-3.0 Open Source Software
+ */
+?>
+<?php /** @var $this Invodo_Video_Block_Product_Video_Inline */ ?>
+<?php $_widgetId = Invodo_Video_Helper_Data::getIncrementId(); ?>
+<div class="std">
+    <div id="invodoVideoContainer<?php echo $_widgetId; ?>" style="width: <?php echo $this->getWidth(); ?>px; height: <?php echo $this->getHeight(); ?>px;"></div>
+    <script type="text/javascript">
+        //<![CDATA[
+        (function(){
+            var container = $('invodoVideoContainer<?php echo $_widgetId; ?>').up('.box-collateral');
+
+            if (!container) {
+                return;
+            }
+
+            container.hide();
+
+            if (typeof(Invodo) !== "undefined") {
+                Invodo.Widget.add({
+                    type: "inplayer",
+                    mode: "embedded",
+                    widgetId: "invodoVideoPlayer<?php echo $_widgetId; ?>",
+                    mpd: "<?php echo $this->getSourceValue(); ?>",
+                    parentDomId: "invodoVideoContainer<?php echo $_widgetId; ?>",
+                    autoplay: <?php echo $this->getAutoPlay() ? 'true' : 'false'; ?>,
+                    onpodload: function() {
+                        container.show();
+                    }
+                });
+            }
+        })();
+        //]]>
+    </script>
+</div>

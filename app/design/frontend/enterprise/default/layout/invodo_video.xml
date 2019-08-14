@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * NOTICE OF LICENSE
+ *
+ * Subject to the terms, conditions and limitations of this EULA,
+ * Company hereby grants you a limited, nonexclusive, nontransferable,
+ * non-assignable license, without rights to sublicense, to install or have installed,
+ * display and use the Software (in object code only) only on the computers
+ * to which the Software is downloaded.  The terms and conditions of this EULA
+ * will govern any upgrades, updates, patches, hotfixes and/or
+ * additional versions of the Software provided by Company, at Company’s sole
+ * discretion, that replace and/or supplement the original Software (collectively, “Update”),
+ * unless such Update is accompanied by or references a separate license
+ * agreement in which case the terms and conditions of that agreement will
+ * govern.  If this EULA governs your use of an Update, such Update shall be
+ * considered Software for purposes of this EULA. Unless earlier terminated
+ * as provided herein, the term of each individual license granted under this
+ * EULA begins on the date of acceptance of this EULA and shall terminate only
+ * as otherwise set forth herein.Each party recognizes that
+ * Company grants no licenses except for the license expressly set forth.
+ *
+ * @category    Invodo
+ * @package     Invodo_Video
+ * @copyright   Copyright (c) 2013 INVODO (http://www.invodo.com/)
+ * @license     http://opensource.org/licenses/OSL-3.0 Open Source Software
+ */
+ -->
+<layout>
+    <default>
+        <reference name="head">
+            <block type="core/text" name="invodo.video.script">
+                <action method="setText"><text helper="invodo_video/data/getScriptTag"/></action>
+            </block>
+        </reference>
+        <reference name="after_body_start">
+            <block type="invodo_video/init" name="invodo.video.init" template="invodo/video/init.phtml" />
+            <block type="invodo_video/conversion_register" name="invodo.video.conversion.register" template="invodo/video/conversion.phtml" />
+            <block type="invodo_video/conversion_session" name="invodo.video.conversion.session" template="invodo/video/conversion.phtml" />
+        </reference>
+    </default>
+
+    <catalog_product_view>
+        <reference name="product.info.additional">
+            <block type="invodo_video/product_video_overlay" name="invodo.product.video.overlay" template="invodo/video/product/view/overlay.phtml"/>
+        </reference>
+        <reference name="product.info">
+            <block type="invodo_video/product_video_inline" name="invodo.product.video.inline" as="invodo_product_video" after="product.description" template="invodo/video/product/view/inline/enterprise.phtml">
+                <action method="addToParentGroup"><group>detailed_info</group></action>
+                <action method="setTitle"><title>Videos</title></action>
+            </block>
+        </reference>
+    </catalog_product_view>
+</layout>

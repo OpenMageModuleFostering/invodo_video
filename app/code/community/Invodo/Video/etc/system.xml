@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * NOTICE OF LICENSE
+ *
+ * Subject to the terms, conditions and limitations of this EULA,
+ * Company hereby grants you a limited, nonexclusive, nontransferable,
+ * non-assignable license, without rights to sublicense, to install or have installed,
+ * display and use the Software (in object code only) only on the computers
+ * to which the Software is downloaded.  The terms and conditions of this EULA
+ * will govern any upgrades, updates, patches, hotfixes and/or
+ * additional versions of the Software provided by Company, at Company’s sole
+ * discretion, that replace and/or supplement the original Software (collectively, “Update”),
+ * unless such Update is accompanied by or references a separate license
+ * agreement in which case the terms and conditions of that agreement will
+ * govern.  If this EULA governs your use of an Update, such Update shall be
+ * considered Software for purposes of this EULA. Unless earlier terminated
+ * as provided herein, the term of each individual license granted under this
+ * EULA begins on the date of acceptance of this EULA and shall terminate only
+ * as otherwise set forth herein.Each party recognizes that
+ * Company grants no licenses except for the license expressly set forth.
+ *
+ * @category    Invodo
+ * @package     Invodo_Video
+ * @copyright   Copyright (c) 2013 INVODO (http://www.invodo.com/)
+ * @license     http://opensource.org/licenses/OSL-3.0 Open Source Software
+ */
+ -->
+<config>
+    <tabs>
+        <invodo translate="label">
+            <label>Invodo</label>
+        </invodo>
+    </tabs>
+    <sections>
+        <invodo_video translate="label">
+            <label>Setup and Options</label>
+            <tab>invodo</tab>
+            <frontend_type>text</frontend_type>
+            <frontend_model>invodo_video/adminhtml_system_config_form</frontend_model>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general>
+                    <label>General settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <site_key>
+                            <label>Site KEY</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </site_key>
+                        <enabled_on_pdp>
+                            <label>Enabled on Product Details Page</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment><![CDATA[Enable video support on product view page]]></comment>
+                        </enabled_on_pdp>
+                        <pdp_video_type>
+                            <label><![CDATA[Product Details Page<br/> Video Display Type]]></label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>invodo_video/widget_source_videotype</source_model>
+                            <comment><![CDATA[<nobr>Overlay: Overlay Call-To-Action will be added to the "More Views" section of the Product Details Page.</nobr><nobr><br/>Inline: Inline Video will be appended above "Description" of the Product Details Page.</nobr>]]></comment>
+                        </pdp_video_type>
+                        <pdp_video_resolution>
+                            <label>Player Container Size</label>
+                            <frontend_type>videoresolution</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>32</sort_order>
+                            <depends>
+                                <pdp_video_type>1</pdp_video_type>
+                            </depends>
+                        </pdp_video_resolution>
+                        <pdp_video_auto_play>
+                            <label>Auto play</label>
+                            <frontend_type>autoplay</frontend_type>
+                            <source_model>invodo_video/widget_source_autoplay</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>33</sort_order>
+                            <depends>
+                                <pdp_video_type>1</pdp_video_type>
+                            </depends>
+                        </pdp_video_auto_play>
+                        <pdp_overlay_action>
+                            <label>Overlay Call-to-Action</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>invodo_video/widget_source_overlayaction</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>31</sort_order>
+                            <depends>
+                                <pdp_video_type>2</pdp_video_type>
+                            </depends>
+                        </pdp_overlay_action>
+                        <pdp_overlay_action_source>
+                            <frontend_type>overlayactionsource</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <sort_order>32</sort_order>
+                            <depends>
+                                <pdp_video_type>2</pdp_video_type>
+                                <pdp_overlay_action>1</pdp_overlay_action>
+                            </depends>
+                        </pdp_overlay_action_source>
+                        <enable_conversion_tracking>
+                            <label>Enable conversion tracking</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment><![CDATA[Enable conversion tracking for add to cart and purchase events]]></comment>
+                        </enable_conversion_tracking>
+                        <export>
+                            <label>Export products</label>
+                            <frontend_type>export</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </export>
+                    </fields>
+                </general>
+            </groups>
+        </invodo_video>
+    </sections>
+</config>

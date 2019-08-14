@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * NOTICE OF LICENSE
+ *
+ * Subject to the terms, conditions and limitations of this EULA,
+ * Company hereby grants you a limited, nonexclusive, nontransferable,
+ * non-assignable license, without rights to sublicense, to install or have installed,
+ * display and use the Software (in object code only) only on the computers
+ * to which the Software is downloaded.  The terms and conditions of this EULA
+ * will govern any upgrades, updates, patches, hotfixes and/or
+ * additional versions of the Software provided by Company, at Company’s sole
+ * discretion, that replace and/or supplement the original Software (collectively, “Update”),
+ * unless such Update is accompanied by or references a separate license
+ * agreement in which case the terms and conditions of that agreement will
+ * govern.  If this EULA governs your use of an Update, such Update shall be
+ * considered Software for purposes of this EULA. Unless earlier terminated
+ * as provided herein, the term of each individual license granted under this
+ * EULA begins on the date of acceptance of this EULA and shall terminate only
+ * as otherwise set forth herein.Each party recognizes that
+ * Company grants no licenses except for the license expressly set forth.
+ *
+ * @category    Invodo
+ * @package     Invodo_Video
+ * @copyright   Copyright (c) 2013 INVODO (http://www.invodo.com/)
+ * @license     http://opensource.org/licenses/OSL-3.0 Open Source Software
+ */
+ -->
+<config>
+    <modules>
+        <Invodo_Video>
+            <version>0.1.1</version>
+        </Invodo_Video>
+    </modules>
+    <global>
+        <blocks>
+            <invodo_video>
+                <class>Invodo_Video_Block</class>
+            </invodo_video>
+        </blocks>
+        <helpers>
+            <invodo_video>
+                <class>Invodo_Video_Helper</class>
+            </invodo_video>
+        </helpers>
+        <models>
+            <invodo_video>
+                <class>Invodo_Video_Model</class>
+            </invodo_video>
+        </models>
+        <resources>
+            <invodo_video_setup>
+                <setup>
+                    <module>Invodo_Video</module>
+                    <class>Mage_Core_Model_Resource_Setup</class>
+                </setup>
+            </invodo_video_setup>
+        </resources>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <invodo_video>
+                    <file>invodo_video.xml</file>
+                </invodo_video>
+            </updates>
+        </layout>
+        <events>
+            <checkout_cart_add_product_complete>
+                <observers>
+                    <invodo_video>
+                        <class>invodo_video/observer</class>
+                        <method>checkoutCartAddProductComplete</method>
+                    </invodo_video>
+                </observers>
+            </checkout_cart_add_product_complete>
+            <checkout_onepage_controller_success_action>
+                <observers>
+                    <invodo_video>
+                        <class>invodo_video/observer</class>
+                        <method>checkoutOnepageControllerSuccessAction</method>
+                    </invodo_video>
+                </observers>
+            </checkout_onepage_controller_success_action>
+        </events>
+    </frontend>
+    <admin>
+        <routers>
+            <invodo_video>
+                <use>admin</use>
+                <args>
+                    <module>Invodo_Video</module>
+                    <frontName>invodo_video</frontName>
+                </args>
+            </invodo_video>
+        </routers>
+    </admin>
+    <adminhtml>
+        <events>
+            <catalog_product_load_after>
+                <observers>
+                    <invodo_video>
+                        <type>singleton</type>
+                        <class>invodo_video/observer_adminhtml</class>
+                        <method>setInvodoVideoEnabled</method>
+                    </invodo_video>
+                </observers>
+            </catalog_product_load_after>
+            <controller_action_layout_load_before>
+                <observers>
+                    <invodo_video>
+                        <type>singleton</type>
+                        <class>invodo_video/observer_adminhtml</class>
+                        <method>controllerActionLayoutLoadBefore</method>
+                    </invodo_video>
+                </observers>
+            </controller_action_layout_load_before>
+            <controller_action_layout_render_before_adminhtml_cms_wysiwyg_images_index>
+                <observers>
+                    <invodo_video>
+                        <type>singleton</type>
+                        <class>invodo_video/observer_adminhtml</class>
+                        <method>adminhtmlCmsWysiwygImagesIndexRenderBefore</method>
+                    </invodo_video>
+                </observers>
+            </controller_action_layout_render_before_adminhtml_cms_wysiwyg_images_index>
+        </events>
+    </adminhtml>
+    <default>
+        <invodo_video>
+            <general>
+                <enabled_on_pdp>1</enabled_on_pdp>
+                <pdp_video_type>1</pdp_video_type>
+                <pdp_video_resolution>480x270</pdp_video_resolution>
+                <pdp_video_auto_play>0</pdp_video_auto_play>
+                <enable_conversion_tracking>1</enable_conversion_tracking>
+            </general>
+        </invodo_video>
+    </default>
+</config>

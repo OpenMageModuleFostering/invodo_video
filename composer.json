@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/invodo_video",
+    "type": "magento-module",
+    "license": "Open-Software-License-(OSL)",
+    "homepage": "",
+    "description": "The features you need to increase video views, encourage sharing, cross-merchandise, upsell, and prompt a purchase decision.",
+    "authors": [
+    {
+        "name": "Invodo",
+        "email": "info@invodo.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

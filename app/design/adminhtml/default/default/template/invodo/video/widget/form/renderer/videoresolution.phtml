@@ -1,0 +1,76 @@
+<?php
+/**
+ * NOTICE OF LICENSE
+ *
+ * Subject to the terms, conditions and limitations of this EULA,
+ * Company hereby grants you a limited, nonexclusive, nontransferable,
+ * non-assignable license, without rights to sublicense, to install or have installed,
+ * display and use the Software (in object code only) only on the computers
+ * to which the Software is downloaded.  The terms and conditions of this EULA
+ * will govern any upgrades, updates, patches, hotfixes and/or
+ * additional versions of the Software provided by Company, at Company’s sole
+ * discretion, that replace and/or supplement the original Software (collectively, “Update”),
+ * unless such Update is accompanied by or references a separate license
+ * agreement in which case the terms and conditions of that agreement will
+ * govern.  If this EULA governs your use of an Update, such Update shall be
+ * considered Software for purposes of this EULA. Unless earlier terminated
+ * as provided herein, the term of each individual license granted under this
+ * EULA begins on the date of acceptance of this EULA and shall terminate only
+ * as otherwise set forth herein.Each party recognizes that
+ * Company grants no licenses except for the license expressly set forth.
+ *
+ * @category    Invodo
+ * @package     Invodo_Video
+ * @copyright   Copyright (c) 2013 INVODO (http://www.invodo.com/)
+ * @license     http://opensource.org/licenses/OSL-3.0 Open Source Software
+ */
+?>
+<?php
+/** @var $this Invodo_Video_Block_Adminhtml_Widget_Renderer_Videoresolution */
+/** @var Varien_Data_Form_Element_Abstract $_element */
+$_element   = $this->getElement();
+$_note      = $_element->getNote();
+$_trId      = $_element->getHtmlContainerId();
+$_class     = $_element->getFieldsetHtmlClass();
+$_width     = $this->getWidth();
+$_height    = $this->getHeight();
+?>
+<?php if (!$_element->getNoDisplay()): ?>
+    <tr<?php if($_trId): ?> id="<?php echo $_trId ?>"<?php endif; ?>>
+        <td class="label<?php echo $_class ? " {$_class}-label" : ''?>"><?php echo trim($_element->getLabelHtml()) ?></td>
+        <td class="<?php echo $_element->hasValueClass() ? $_element->getValueClass() : 'value' ?><?php echo $_class ? " {$_class}-value" : ''?>">
+            <input type="hidden" id="<?php echo $_element->getHtmlId(); ?>" name="<?php echo trim($_element->getName()); ?>" value="<?php echo trim($_element->getValue()); ?>">
+            <div style="width: 50px; float: left">
+                <input type="text" id="invodo_video_widget_width" style="width: 45px" value="<?php echo $_width; ?>" class="required-entry validate-digits validate-digits-range digits-range-100-2000">
+                <span><?php echo $this->helper('invodo_video')->__('Width'); ?></span>
+            </div>
+            <div style="float: left;">&nbsp;x&nbsp;</div>
+            <div style="width: 50px; float: left; margin-right: 10px">
+                <input type="text" id="invodo_video_widget_height" value="<?php echo $_height; ?>" style="width: 45px" class="required-entry validate-digits validate-digits-range digits-range-100-2000">
+                <span><?php echo $this->helper('invodo_video')->__('Height'); ?></span>
+            </div>
+            <div><?php echo $this->helper('invodo_video')->__('Note: match your container size to the aspect ratio of your video'); ?></div>
+            <?php if ($_note): ?>
+                <p class="note<?php echo $_class ? " {$_class}-note" : ''?>" id="note_<?php echo $_element->getId()?>"><span><?php echo $_note ?></span></p>
+            <?php endif ?>
+        </td>
+    </tr>
+    <script type="text/javascript">
+        //<![CDATA[
+        (function() {
+            $('invodo_video_widget_width').observe('change', function() {
+                var width = parseInt(this.value);
+                var height = width ? parseInt(width / 16 * 9) : 0;
+                $('invodo_video_widget_height').value = height;
+                $('<?php echo $_element->getHtmlId(); ?>').value = width + 'x' + height;
+            });
+
+            $('invodo_video_widget_height').observe('change', function() {
+                var height = parseInt(this.value);
+                var width = $('invodo_video_widget_width').value;
+                $('<?php echo $_element->getHtmlId(); ?>').value = width + 'x' + height;
+            });
+        })();
+        //]]>
+    </script>
+<?php endif; ?>

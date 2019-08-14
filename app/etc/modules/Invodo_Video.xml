@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Invodo_Video>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Invodo_Video>
+    </modules>
+</config>
