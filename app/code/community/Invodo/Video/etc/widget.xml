@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * NOTICE OF LICENSE
+ *
+ * Subject to the terms, conditions and limitations of this EULA,
+ * Company hereby grants you a limited, nonexclusive, nontransferable,
+ * non-assignable license, without rights to sublicense, to install or have installed,
+ * display and use the Software (in object code only) only on the computers
+ * to which the Software is downloaded.  The terms and conditions of this EULA
+ * will govern any upgrades, updates, patches, hotfixes and/or
+ * additional versions of the Software provided by Company, at Company’s sole
+ * discretion, that replace and/or supplement the original Software (collectively, “Update”),
+ * unless such Update is accompanied by or references a separate license
+ * agreement in which case the terms and conditions of that agreement will
+ * govern.  If this EULA governs your use of an Update, such Update shall be
+ * considered Software for purposes of this EULA. Unless earlier terminated
+ * as provided herein, the term of each individual license granted under this
+ * EULA begins on the date of acceptance of this EULA and shall terminate only
+ * as otherwise set forth herein.Each party recognizes that
+ * Company grants no licenses except for the license expressly set forth.
+ *
+ * @category    Invodo
+ * @package     Invodo_Video
+ * @copyright   Copyright (c) 2013 INVODO (http://www.invodo.com/)
+ * @license     http://opensource.org/licenses/OSL-3.0 Open Source Software
+ */
+ -->
+<widgets>
+    <invodo_video_widget type="invodo_video/widget" translate="name description" module="invodo_video">
+        <name>Invodo Video</name>
+        <description>Displays Invodo-Hosted Video</description>
+        <parameters>
+            <video_type translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Display type</label>
+                <type>select</type>
+                <source_model>invodo_video/widget_source_videotype</source_model>
+            </video_type>
+            <video_resolution>
+                <visible>1</visible>
+                <required>1</required>
+                <label>Player Container Size</label>
+                <type>invodo_video/adminhtml_widget_renderer_videoresolution</type>
+                <depends>
+                    <video_type>
+                        <values>
+                            <one>1</one>
+                        </values>
+                    </video_type>
+                </depends>
+            </video_resolution>
+            <auto_play translate="label">
+                <visible>1</visible>
+                <required>0</required>
+                <label>Auto play</label>
+                <type>radios</type>
+                <source_model>invodo_video/widget_source_autoplay</source_model>
+                <depends>
+                    <video_type>
+                        <values>
+                            <one>1</one>
+                        </values>
+                    </video_type>
+                </depends>
+                <helper_block>
+                    <type>invodo_video/adminhtml_widget_renderer_autoplay</type>
+                </helper_block>
+            </auto_play>
+            <overlay_action translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Overlay Call-to-Action</label>
+                <type>select</type>
+                <source_model>invodo_video/widget_source_overlayaction</source_model>
+                <depends>
+                    <video_type>
+                        <values>
+                            <one>2</one>
+                        </values>
+                    </video_type>
+                </depends>
+            </overlay_action>
+            <overlay_action_source translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label></label>
+                <type>invodo_video/adminhtml_widget_renderer_overlayactionsource</type>
+                <depends>
+                    <video_type>
+                        <values>
+                            <one>2</one>
+                        </values>
+                    </video_type>
+                    <overlay_action>
+                        <values>
+                            <one>1</one>
+                        </values>
+                    </overlay_action>
+                </depends>
+            </overlay_action_source>
+            <source_type translate="label">
+                <visible>1</visible>
+                <required>0</required>
+                <label>Video Lookup Identifier</label>
+                <type>radios</type>
+                <helper_block>
+                    <type>invodo_video/adminhtml_widget_renderer_sourcetype</type>
+                </helper_block>
+                <source_model>invodo_video/widget_source_sourcetype</source_model>
+            </source_type>
+            <source_value translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <type>text</type>
+                <helper_block>
+                    <type>invodo_video/adminhtml_widget_renderer_sourcevalue</type>
+                </helper_block>
+                <description>Limit 500 characters</description>
+            </source_value>
+            <template>
+                <required>1</required>
+                <value>invodo/video/widget.phtml</value>
+            </template>
+        </parameters>
+    </invodo_video_widget>
+</widgets>

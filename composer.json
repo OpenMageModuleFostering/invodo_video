@@ -1,10 +1,9 @@
 {
     "name": "OpenMageModuleFostering/invodo_video",
     "type": "magento-module",
-    "license": "Invodo-Magento-Connect-EULA",
+    "license": "Open-Software-License-(OSL)",
     "homepage": "",
-    "description": "The features you need to increase video views, encourage sharing, cross-merchandise, upsell, and prompt a
-        purchase decision.",
+    "description": "The features you need to increase video views, encourage sharing, cross-merchandise, upsell, and prompt a purchase decision.",
     "authors": [
     {
         "name": "Invodo",
