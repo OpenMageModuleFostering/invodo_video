@@ -31,27 +31,25 @@
  * @category    Invodo
  * @package     Invodo_Video
  */
-class Invodo_Video_Block_Adminhtml_System_Config_Form_Field_Autoplay extends Varien_Data_Form_Element_Radios
+class Invodo_Video_Block_Adminhtml_Widget_Form_Element_Dependence
+    extends Mage_Adminhtml_Block_Widget_Form_Element_Dependence
 {
     /**
-     * Retrieves element html
+     * Register field name dependence one from each other by specified values
      *
-     * @return string
+     *
+     * @param string $fieldName
+     * @param string $fieldNameFrom
+     * @param string|array $refValues
+     * @return Mage_Adminhtml_Block_Widget_Form_Element_Dependence
      */
-    public function getElementHtml()
+    public function addFieldDependence($fieldName, $fieldNameFrom, $refValues)
     {
-        $disabled = $this->getDisabled();
-        $html = sprintf('<div id="%s">%s</div>', $this->getHtmlId(), parent::getElementHtml());
-
-        if ($disabled) {
-            $html = str_replace('type="radio"', 'disabled type="radio"', $html);
-
-            foreach ($this->getValues() as $option) {
-                $html .= sprintf('<input type="hidden" id="%s" checked="checked">',
-                    $this->getHtmlId() . $option['value'] . '_inherit');
-            }
+        if (version_compare(Mage::getVersion(), '1.7.0.0', '<')) {
+            $this->_depends[$fieldName][$fieldNameFrom] = $refValues;
+            return $this;
+        } else {
+            return parent::addFieldDependence($fieldName, $fieldNameFrom, $refValues);
         }
-
-        return $html;
     }
 }

@@ -128,7 +128,8 @@ class Invodo_Video_Helper_Data extends Mage_Core_Helper_Abstract
         $siteKey = $config->getGeneralConfig('site_key');
 
         if ($siteKey) {
-            return sprintf('<script type="text/javascript" src="//e.invodo.com/4.0/s/%s.js"></script>' . "\n", $siteKey);
+            return sprintf('<script type="text/javascript" src="//e.invodo.com/4.0/s/%s.js"></script>' . "\n",
+                $siteKey);
         }
     }
 

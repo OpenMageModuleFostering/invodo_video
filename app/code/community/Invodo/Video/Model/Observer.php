@@ -70,10 +70,11 @@ class Invodo_Video_Model_Observer
         }
 
         $session->addEvent('cartAdd', array(
-            'mpd'       => $product->getSku(),
-            'quantity'  => $qty,
-            'price'     => $product->getFinalPrice($qty)
-        ));
+                'mpd' => $product->getSku(),
+                'quantity' => $qty,
+                'price' => $product->getFinalPrice($qty)
+            )
+        );
     }
 
     /**

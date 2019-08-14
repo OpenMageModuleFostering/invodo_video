@@ -50,7 +50,8 @@ class Invodo_Video_Block_Product_Video_Overlay_Default extends Invodo_Video_Bloc
     {
         switch ($this->_config->getGeneralConfig('pdp_overlay_action')) {
             case Invodo_Video_Helper_Data::OVERLAY_ACTION_CUSTOM_IMAGE:
-                $source = "'" . Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $this->_config->getGeneralConfig('pdp_overlay_action_source') . "'";
+                $source = "'" . Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) .
+                    $this->_config->getGeneralConfig('pdp_overlay_action_source') . "'";
                 break;
 
             case Invodo_Video_Helper_Data::OVERLAY_ACTION_INVODO_THUMBNAIL:

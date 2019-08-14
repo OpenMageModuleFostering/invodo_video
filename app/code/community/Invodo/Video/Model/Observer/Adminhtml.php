@@ -34,26 +34,6 @@
 class Invodo_Video_Model_Observer_Adminhtml
 {
     /**
-     * Sets video enabled if it was not set before
-     * (this is for viewing 'Yes' by default in select for products without this value)
-     *
-     * @param Varien_Event_Observer $observer
-     */
-    public function setInvodoVideoEnabled($observer)
-    {
-        /** @var Mage_Catalog_Model_Product $product */
-        $product = $observer->getProduct();
-
-        if (!$product || !$product->getId()) {
-            return;
-        }
-
-        if ($product->getData('invodo_video_enabled') === null) {
-            $product->setData('invodo_video_enabled', 1);
-        }
-    }
-
-    /**
      * Adds editor handle for configuration section
      *
      * @param Varien_Event_Observer $observer $observer
@@ -104,11 +84,8 @@ class Invodo_Video_Model_Observer_Adminhtml
 
         $parent = $previous->getParentBlock();
         $parent->unsetChild($name);
-        $parent->insert($layout
-            ->createBlock(
-                'invodo_video/adminhtml_cms_wysiwyg_images_content',
-                $name
-            )->setTemplate('cms/browser/js.phtml')
-        );
+        $block = $layout->createBlock('invodo_video/adminhtml_cms_wysiwyg_images_content', $name);
+        $block->setTemplate('cms/browser/js.phtml');
+        $parent->insert($block);
     }
 }

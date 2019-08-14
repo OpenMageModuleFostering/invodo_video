@@ -26,7 +26,7 @@
  */
 
 /* @var $installer Mage_Catalog_Model_Resource_Setup */
-$installer = Mage::getModel('catalog/resource_setup', 'invodo_video_setup');
+$installer = $this;
 $installer->startSetup();
 
 //adds new attribute
@@ -44,7 +44,6 @@ $installer->addAttribute(
         'required'                      => false,
         'user_defined'                  => true,
         'default'                       => 1,
-        'visible'                       => true,
         'searchable'                    => false,
         'filterable'                    => false,
         'filterable_in_search'          => false,

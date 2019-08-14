@@ -28,18 +28,28 @@
 <?php /** @var $this Invodo_Video_Block_Product_Video_Inline */ ?>
 <?php $_widgetId = Invodo_Video_Helper_Data::getIncrementId(); ?>
 <div class="std">
-    <div id="invodoVideoContainer<?php echo $_widgetId; ?>" style="width: <?php echo $this->getWidth(); ?>px; height: <?php echo $this->getHeight(); ?>px;"></div>
+    <div id="invodoVideoContainer<?php echo $_widgetId; ?>" style="width: <?php echo $this->getWidth(); ?>px; height: <?php echo $this->getHeight(); ?>px; max-width:100%"</div>
     <script type="text/javascript">
         //<![CDATA[
-        (function(){
-            var container = $('invodoVideoContainer<?php echo $_widgetId; ?>').up('.tab-container');
+        jQuery(document).ready(function() {
+            var invodo_container = $('invodoVideoContainer<?php echo $_widgetId; ?>');
+            var container = invodo_container.up('.tab-container');
             var tab = container.previous();
+            var div = tab.up('product-collateral');
+            var lis = tab.up('.collateral-tabs').previous().childElements();
+            var li = null;
+            for (var i = 0; i < lis.length; i++) {
+                if(lis[i].innerHTML == tab.innerHTML) {
+                    li = lis[i];
+                    break;
+                }
+            }
 
-            if (!container || !tab) {
+            if (!container || !tab || !li) {
                 return;
             }
 
-            container.hide();
+            li.hide();
             tab.hide();
 
             if (typeof(Invodo) !== "undefined") {
@@ -51,12 +61,12 @@
                     parentDomId: "invodoVideoContainer<?php echo $_widgetId; ?>",
                     autoplay: <?php echo $this->getAutoPlay() ? 'true' : 'false'; ?>,
                     onpodload: function() {
+                        li.show();
                         tab.show();
-                        $('InvodoFlashPlayer_invodoVideoPlayer<?php echo $_widgetId; ?>').style.setProperty("height", "100%", "important");
                     }
                 });
             }
-        })();
+        });
         //]]>
     </script>
 </div>

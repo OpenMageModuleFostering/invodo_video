@@ -3,11 +3,11 @@
     "type": "magento-module",
     "license": "Open-Software-License-(OSL)",
     "homepage": "",
-    "description": "The features you need to increase video views, encourage sharing, cross-merchandise, upsell, and prompt a purchase decision.",
+    "description": "Invodo Video for Magento",
     "authors": [
     {
-        "name": "Invodo",
-        "email": "info@invodo.com"
+        "name": "Eric Burleson",
+        "email": "eburleson@invodo.com"
     }
 ],
     "suggest": {

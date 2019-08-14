@@ -92,16 +92,6 @@ class Invodo_Video_Block_Widget extends Mage_Core_Block_Template
     }
 
     /**
-     * Widget type is overlay
-     *
-     * @return bool
-     */
-    public function isOverlayType()
-    {
-        return $this->getData('video_type') == Invodo_Video_Helper_Data::VIDEO_TYPE_OVERLAY;
-    }
-
-    /**
      * Retrieves source type as api param name
      *
      * @return string
@@ -136,7 +126,8 @@ class Invodo_Video_Block_Widget extends Mage_Core_Block_Template
     {
         switch ($this->getOverlayAction()) {
             case Invodo_Video_Helper_Data::OVERLAY_ACTION_CUSTOM_IMAGE:
-                $source = "'" . Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $this->getData('overlay_action_source') . "'";
+                $source = "'" . Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) .
+                    $this->getData('overlay_action_source') . "'";
                 break;
 
             case Invodo_Video_Helper_Data::OVERLAY_ACTION_INVODO_THUMBNAIL:

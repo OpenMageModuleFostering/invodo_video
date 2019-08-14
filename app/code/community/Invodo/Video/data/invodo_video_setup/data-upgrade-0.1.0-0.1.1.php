@@ -25,10 +25,6 @@
  * @license     http://opensource.org/licenses/OSL-3.0 Open Source Software
  */
 
-/* @var $installer Mage_Core_Model_Resource_Setup */
-$installer = $this;
-$installer->startSetup();
-
 // copies images to media folder
 $images = array('CTA_watchvideo_gray_56x56.png', 'CTA_watchvideo_grayfill_56x56.png', 'CTA_watchvideo_red_56x56.png');
 
@@ -40,5 +36,3 @@ $mediaFile->mkdir($destinationDir);
 foreach ($images as $image) {
     $mediaFile->cp($sourceDir . $image, $destinationDir . $image);
 }
-
-$installer->endSetup();

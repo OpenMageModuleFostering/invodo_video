@@ -31,7 +31,8 @@
  * @category    Invodo
  * @package     Invodo_Video
  */
-class Invodo_Video_Block_Adminhtml_Widget_Renderer_Overlayactionsource extends Mage_Adminhtml_Block_Widget_Form_Renderer_Fieldset_Element
+class Invodo_Video_Block_Adminhtml_Widget_Renderer_Overlayactionsource extends
+    Mage_Adminhtml_Block_Widget_Form_Renderer_Fieldset_Element
 {
     /**
      * Sets template

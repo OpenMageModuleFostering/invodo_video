@@ -46,8 +46,9 @@ class Invodo_Video_Adminhtml_ExportController extends Mage_Adminhtml_Controller_
             $model->setData($this->getRequest()->getParams());
             $model->setData('entity', 'catalog_product');
             $model->setData('export_filter', array(
-                'visibility'    => Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH
-            ));
+                    'visibility' => Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH
+                )
+            );
 
             return $this->_prepareDownloadResponse(
                 $model->getFileName(),
@@ -62,5 +63,10 @@ class Invodo_Video_Adminhtml_ExportController extends Mage_Adminhtml_Controller_
         }
 
         return $this->_redirect('*/*/index');
+    }
+
+    protected function _isAllowed()
+    {
+        return Mage::getSingleton('admin/session')->isAllowed('system/config/invodo_video');
     }
 }

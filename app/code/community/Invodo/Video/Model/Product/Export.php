@@ -81,7 +81,8 @@ class Invodo_Video_Model_Product_Export extends Mage_ImportExport_Model_Export
             }
             if (! $this->_writer instanceof Mage_ImportExport_Model_Export_Adapter_Abstract) {
                 Mage::throwException(
-                    Mage::helper('importexport')->__('Adapter object must be an instance of %s', 'Mage_ImportExport_Model_Export_Adapter_Abstract')
+                    Mage::helper('importexport')->__('Adapter object must be an instance of %s',
+                        'Mage_ImportExport_Model_Export_Adapter_Abstract')
                 );
             }
         }
