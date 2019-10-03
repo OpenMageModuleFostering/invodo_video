@@ -1,16 +1,19 @@
 {
-    "name": "OpenMageModuleFostering/invodo_video",
+    "name": "OpenMageModuleFostering\/invodo_video",
     "type": "magento-module",
     "license": "Open-Software-License-(OSL)",
     "homepage": "",
     "description": "Invodo Video for Magento",
     "authors": [
-    {
-        "name": "Eric Burleson",
-        "email": "eburleson@invodo.com"
-    }
-],
+        {
+            "name": "Eric Burleson",
+            "email": "eburleson@invodo.com"
+        }
+    ],
     "suggest": {
-        "magento-hackathon/magento-composer-installer": "*"
-    }
+        "magento-hackathon\/magento-composer-installer": "*"
+    },
+    "keywords": [
+        "openmage-module"
+    ]
 }
