@@ -1,7 +1,7 @@
 {
-    "name": "OpenMageModuleFostering\/invodo_video",
+    "name": "openmage-module-fostering\/invodo_video",
     "type": "magento-module",
-    "license": "Open-Software-License-(OSL)",
+    "license": "OSL-3.0",
     "homepage": "",
     "description": "Invodo Video for Magento",
     "authors": [
